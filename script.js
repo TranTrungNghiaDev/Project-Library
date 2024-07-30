@@ -34,13 +34,28 @@ function displayAllBook() {
         let changeStateCell = document.createElement("td");
         let changeStateBtn = document.createElement("button");
         changeStateBtn.textContent = "Change State";
+        changeStateBtn.addEventListener("click", () => {
+          let index= idCell.textContent;
+          if (myLibrary[index].isRead === "yes") {
+            myLibrary[index].isRead = "no";
+          }
+          else {
+            myLibrary[index].isRead = "yes";
+          }
+          resetBookListDisplayed();
+          displayAllBook();
+        })
         changeStateCell.appendChild(changeStateBtn);
 
         let deteleCell = document.createElement("td");
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
+        // Delete book from myLibrary array by index
+        // Remove all book on page
+        // Display book in myLibrary again
         deleteBtn.addEventListener("click", () => {
-          myLibrary.splice(idCell.textContent, 1);
+          let index = myLibrary.textContent;
+          myLibrary.splice(index, 1);
           resetBookListDisplayed();
           displayAllBook();
         })
@@ -64,8 +79,8 @@ function resetBookListDisplayed() {
 }
 
 let booklist = document.querySelector("#books-list");
-let harryPotter = new Book("Harry Potter", "J. K. Rowling", 1300, "Not yet");
-let onePiece = new Book("One Piece", "Oda", 10000, "readed");
+let harryPotter = new Book("Harry Potter", "J. K. Rowling", 1300, "yes");
+let onePiece = new Book("One Piece", "Oda", 10000, "no");
 
 addBookToLibrary(harryPotter);
 addBookToLibrary(onePiece);
@@ -84,7 +99,7 @@ submitBtn.addEventListener("click", (e) => {
   let title = document.querySelector("#title").value;
   let author = document.querySelector("#author").value;
   let pages = document.querySelector("#pages").value;
-  let isRead = document.querySelector("#isRead").value;
+  let isRead = document.querySelector("input[name='isRead']:checked").value;
 
   let newBook = new Book(title, author, pages, isRead);
   console.log(title, author, pages, isRead);

@@ -35,9 +35,14 @@
             <label for="pages">Pages: </label>
             <input type="number" name="pages" id="pages" required>
 
-            <label for="isRead">Is read: </label>
-            <input type="text" name="isRead" id="isRead" required>
-
+            <fieldset>
+                <legend>Have you read this book ?</legend>
+                <input type="radio" name="isRead" id="yes" value="yes">
+                <label for="yes">Yes</label>
+                <input type="radio" name="isRead" id="yes" value="no">
+                <label for="no">No</label>
+            </fieldset>
+            
             <button id="submit-btn" type="submit">Submit</button>
             <button id="cancel-btn" type="button">Cancel</button>
         </form>
