@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: "Kalnia Glaze", serif;
+}
+
+button {
+    font-family: "Kalnia Glaze", serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+table, tr, th, td {
+    border: 1px solid pink;
+}
+
+#show-dialog {
+    display: block;
+    margin: 20px auto;
+}
+
+#show-dialog {
+    outline: none;
+}

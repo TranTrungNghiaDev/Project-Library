@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="./script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
     <title>Document</title>
 </head>
+
 <body>
     <h1>My Library</h1>
     <table>
@@ -16,12 +22,14 @@
                 <th>Author</th>
                 <th>Pages</th>
                 <th>isRead</th>
+                <th>Change State</th>
+                <th>Remove Book</th>
             </tr>
         </thead>
         <tbody id="books-list">
         </tbody>
     </table>
-    
+
     <dialog id="form-dialog">
         <form action="" method="dialog">
             <h2>Add new book</h2>
@@ -42,7 +50,7 @@
                 <input type="radio" name="isRead" id="yes" value="no">
                 <label for="no">No</label>
             </fieldset>
-            
+
             <button id="submit-btn" type="submit">Submit</button>
             <button id="cancel-btn" type="button">Cancel</button>
         </form>
@@ -50,4 +58,5 @@
 
     <button id="show-dialog">New Book</button>
 </body>
+
 </html>
