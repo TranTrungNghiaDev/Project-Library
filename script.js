@@ -1,3 +1,4 @@
+// Display and add book logics
 const myLibrary = [];
 
 function Book(title, author, pages, isRead) {
@@ -16,9 +17,11 @@ function displayAllBook() {
 
     myLibrary.forEach(book => {
         let tableRow = document.createElement("tr");
+        tableRow.setAttribute("class", "book-item");
 
         let idCell = document.createElement("td");
         idCell.textContent = count;
+
         let titleCell = document.createElement("td");
         titleCell.textContent = book.title;
         let authorCell = document.createElement("td");
@@ -36,6 +39,11 @@ function displayAllBook() {
         let deteleCell = document.createElement("td");
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", () => {
+          myLibrary.splice(idCell.textContent, 1);
+          resetBookListDisplayed();
+          displayAllBook();
+        })
         deteleCell.appendChild(deleteBtn);
 
         tableRow.appendChild(idCell);
@@ -51,6 +59,10 @@ function displayAllBook() {
     });
 }
 
+function resetBookListDisplayed() {
+  booklist.innerHTML = "";
+}
+
 let booklist = document.querySelector("#books-list");
 let harryPotter = new Book("Harry Potter", "J. K. Rowling", 1300, "Not yet");
 let onePiece = new Book("One Piece", "Oda", 10000, "readed");
@@ -58,3 +70,36 @@ let onePiece = new Book("One Piece", "Oda", 10000, "readed");
 addBookToLibrary(harryPotter);
 addBookToLibrary(onePiece);
 displayAllBook();
+
+// Dialog logic
+let newBookBtn = document.querySelector("#show-dialog");
+let submitBtn = document.querySelector("#submit-btn");
+let cancelBtn = document.querySelector("#cancel-btn");
+let formDialog = document.querySelector("#form-dialog");
+
+// Get value form input then add it to myLibrary array
+// Reset Books displayed to prevent display book has been displayed
+// After reset display all book in library again
+submitBtn.addEventListener("click", (e) => {
+  let title = document.querySelector("#title").value;
+  let author = document.querySelector("#author").value;
+  let pages = document.querySelector("#pages").value;
+  let isRead = document.querySelector("#isRead").value;
+
+  let newBook = new Book(title, author, pages, isRead);
+  console.log(title, author, pages, isRead);
+
+  addBookToLibrary(newBook);
+  resetBookListDisplayed();
+  displayAllBook();
+})
+
+// Open dialog when add new book
+newBookBtn.addEventListener("click", () => {
+  formDialog.showModal();
+})
+
+// Close dialog when don't want add book anymore
+cancelBtn.addEventListener("click", () => {
+  formDialog.close();
+})
